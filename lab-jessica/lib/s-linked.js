@@ -1,3 +1,5 @@
+'use strict';
+
 const Node = require('./sll-node.js');
 
 const SinglyLinkedList = module.exports = function(arr) {

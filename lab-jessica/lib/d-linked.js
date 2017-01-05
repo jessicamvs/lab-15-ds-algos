@@ -1,3 +1,5 @@
+'use strict';
+
 const Node = require('./dll-node.js');
 
 const DoublyLinkedList = module.exports = function() {
