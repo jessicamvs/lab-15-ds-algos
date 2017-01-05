@@ -37,3 +37,43 @@ SinglyLinkedList.prototype.append = function(val) {
     _setLastNode(node.next);
   }
 };
+
+SinglyLinkedList.prototype.removeHead = function() {
+  if(!this.head) return;
+
+  if(!this.head.next) {
+    let frontNode = this.head;
+    this.head = null;
+    return frontNode.val;
+  }
+
+  let frontNode = this.head;
+  this.head = this.head.next;
+  return frontNode.val;
+};
+
+SinglyLinkedList.prototype.removeTail = function() {
+  if(!this.head) return;
+
+  if(!this.head.next) {
+    let lastNode = this.head;
+    this.head = null;
+    return lastNode.val;
+  }
+
+  let secondToLastNode = null;
+  _setSecondToLastNode(this.head);
+
+
+  let lastNode = secondToLastNode.next;
+  secondToLastNode.next = null;
+
+  function _setSecondToLastNode(node) {
+    if(!node.next) return;
+
+    secondToLastNode = node;
+    _setSecondToLastNode(node.next);
+  }
+
+  return lastNode.val;
+};
