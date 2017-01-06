@@ -65,21 +65,6 @@ describe('Doubly Linked List', function() {
       dll = new DLL();
     });
 
-    // DoublyLinkedList.prototype.removeHead = function() {
-    //   if(!this.head) return;
-    //
-    //   if(!this.head.next) {
-    //     let frontNode = this.head;
-    //     this.head = null;
-    //     return frontNode.val;
-    //   }
-    //
-    //   let frontNode = this.head;
-    //   this.head.next = this.head;
-    //   this.head.prev = null;
-    //   return frontNode.val;
-    // };
-    //
     it('should result in an empty list when list has one node', function() {
       dll.append(5);
       expect(dll.head.next).to.not.exist;
@@ -88,18 +73,17 @@ describe('Doubly Linked List', function() {
       expect(dll.tail).to.not.exist;
     });
 
-    it('should assign current head\'s next to head', function() {
+    it('should assign current head\'s next to new head', function() {
       dll.append(27);
       dll.append(15);
       expect(dll.head.next.val).to.equal(15);
-      console.log('before removal', dll.head.val);
       dll.removeHead();
-      console.log('after removal', dll.head.val);
       expect(dll.head.val).to.equal(15);
     });
 
     it('should return the value of the removed node', function() {
-      expect(dll.removeHead()).to.equal(27);
+      expect(dll.head.val).to.equal(15);
+      expect(dll.removeHead()).to.equal(15);
     });
   });
 
@@ -110,16 +94,28 @@ describe('Doubly Linked List', function() {
       dll = new DLL();
     });
 
-    it('', function() {
-
+    it('should result in an empty list when list has one node', function() {
+      dll.append(5);
+      expect(dll.tail.val).to.equal(5);
+      expect(dll.tail.prev).to.not.exist;
+      dll.removeTail();
+      expect(dll.tail).to.not.exist;
+      expect(dll.head).to.not.exist;
     });
 
-    it('', function() {
-
+    it('should assign current tail\'s prev to new tail', function() {
+      dll.append(5);
+      dll.append(10);
+      expect(dll.tail.val).to.equal(10);
+      expect(dll.tail.prev.val).to.equal(5);
+      dll.removeTail();
+      expect(dll.tail.val).to.equal(5);
     });
 
-    it('', function() {
-
+    it('should return value of removed node', function() {
+      dll.append(9);
+      expect(dll.tail.val).to.equal(9);
+      expect(dll.removeTail()).to.equal(9);
     });
   });
 });

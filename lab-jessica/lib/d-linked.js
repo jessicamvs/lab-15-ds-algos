@@ -38,32 +38,33 @@ DoublyLinkedList.prototype.append = function(val) {
 };
 
 DoublyLinkedList.prototype.removeHead = function() {
+  let removedNode = this.head;
+
   if(!this.head) return;
 
   if(!this.head.next) {
-    let frontNode = this.head;
     this.head = null;
     this.tail = null;
-    return frontNode.val;
+    return removedNode.val;
   }
 
-  let frontNode = this.head;
   this.head = this.head.next;
   this.head.prev = null;
-  return frontNode.val;
+  return removedNode.val;
 };
 
 DoublyLinkedList.prototype.removeTail = function() {
+  let removedNode = this.tail;
+
   if(!this.tail) return;
 
   if(!this.tail.prev) {
-    let lastNode = this.tail;
     this.tail = null;
-    return lastNode.val;
+    this.head = null;
+    return removedNode.val;
   }
 
-  let lastNode = this.tail;
-  this.tail.prev = this.tail;
+  this.tail = this.tail.prev;
   this.tail.next = null;
-  return lastNode.val;
+  return removedNode.val;
 };
