@@ -68,3 +68,28 @@ DoublyLinkedList.prototype.removeTail = function() {
   this.tail.next = null;
   return removedNode.val;
 };
+
+DoublyLinkedList.prototype.reverse = function() {
+  if(!this.head || !this.head.next) return;
+
+  let lastNode;
+  this.tail = this.head;
+
+  _setLastNode(this.head);
+  this.head = lastNode;
+
+  function _setLastNode(node) {
+    if(!node) return;
+    lastNode = node;
+    _setLastNode(node.next);
+    _swapPrevNext(node);
+  }
+
+  function _swapPrevNext(node) {
+    const currPrev = node.prev;
+    const currNext = node.next;
+
+    node.next = currPrev;
+    node.prev = currNext;
+  }
+};
