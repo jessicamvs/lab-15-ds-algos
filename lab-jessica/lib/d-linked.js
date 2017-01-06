@@ -43,11 +43,12 @@ DoublyLinkedList.prototype.removeHead = function() {
   if(!this.head.next) {
     let frontNode = this.head;
     this.head = null;
+    this.tail = null;
     return frontNode.val;
   }
 
   let frontNode = this.head;
-  this.head.next = this.head;
+  this.head = this.head.next;
   this.head.prev = null;
   return frontNode.val;
 };
