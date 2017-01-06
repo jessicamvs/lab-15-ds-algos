@@ -118,4 +118,38 @@ describe('Doubly Linked List', function() {
       expect(dll.removeTail()).to.equal(9);
     });
   });
+
+  describe('reverse()', function() {
+    let dll;
+
+    before(() => {
+      dll = new DLL();
+    });
+
+    it('should reverse tail and head vals', function() {
+      dll.append(57);
+      dll.append(23);
+      expect(dll.head.val).to.equal(57);
+      expect(dll.tail.val).to.equal(23);
+      dll.reverse();
+      expect(dll.head.val).to.equal(23);
+      expect(dll.tail.val).to.equal(57);
+    });
+
+    it('should reverse prev and next properties', function() {
+      expect(dll.head.prev).to.equal(null);
+      expect(dll.head.next.val).to.equal(57);
+      expect(dll.tail.prev.val).to.equal(23);
+      expect(dll.tail.next).to.equal(null);
+      dll.reverse();
+      expect(dll.head.prev).to.equal(null);
+      expect(dll.head.next.val).to.equal(23);
+      expect(dll.tail.prev.val).to.equal(57);
+      expect(dll.tail.next).to.equal(null);
+    });
+
+    it('should return value of new head', function() {
+      expect(dll.reverse()).to.equal(23);
+    });
+  });
 });

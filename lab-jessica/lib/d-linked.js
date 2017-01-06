@@ -70,7 +70,10 @@ DoublyLinkedList.prototype.removeTail = function() {
 };
 
 DoublyLinkedList.prototype.reverse = function() {
-  if(!this.head || !this.head.next) return;
+
+  if(!this.head) return;
+
+  if(!this.head.next) return this.head.val;
 
   let lastNode;
   this.tail = this.head;
@@ -92,4 +95,6 @@ DoublyLinkedList.prototype.reverse = function() {
     node.next = currPrev;
     node.prev = currNext;
   }
+
+  return this.head.val;
 };
