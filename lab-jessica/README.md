@@ -76,4 +76,4 @@ Instantiate a doubly linked list ```new DoublyLinkedList()```
 
 `.removeTail()` - Removed the last node in the list and returns the value of the removed node.
 
-`.reverse()` - Reverses the order of the list. Head becomes tail and tail become head.
+`.reverse()` - Reverses the order of the list. Head becomes tail and tail becomes head.
